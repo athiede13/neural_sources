@@ -1,0 +1,16 @@
+*.pyc
+*.txt
+*.csv
+*.ods
+*.Rhistory
+
+preprocessing/MEG/sss_maxfilter/mean_head_transf.py
+preprocessing/MEG/sss_maxfilter/test_max_results.py
+preprocessing/MEG/epoching_noise_cov/plot_evoked_whitening.py
+preprocessing/MEG/bad_channels/
+preprocessing/MRI/freesurfer/
+preprocessing/MEG/sss_maxfilter/
+preprocessing/MEG/epoching_noise_cov/
+source_level/debugging_units/
+source_level/old/
+correlations/old/
