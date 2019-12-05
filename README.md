@@ -6,11 +6,11 @@ DOI for the code: xxx
 
 ## Preprocessing
 
-Removal of noisy channels, maxfilter and removal of physiological artifacts from MEG data, followed by filtering and epoching. Freesurfer pipeline for MRI data.
+Removal of noisy channels, maxfilter and removal of physiological artifacts from MEG data, followed by filtering and epoching. [Freesurfer](https://surfer.nmr.mgh.harvard.edu/) pipeline for MRI data.
 
 ## Source modeling
 
-Setup of source space, forward and inverse operators in individual cortically-constrained source space. Set up of functional ROI.
+Setup of source space, forward and inverse operators in individual cortically-constrained source space. Set up of functional region of interest (ROI).
 
 ## Correlations
 
