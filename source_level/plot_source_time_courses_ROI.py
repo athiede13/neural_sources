@@ -14,9 +14,9 @@ import mne
 # to fill
 time = 1 # 1=both!, 2=late MMN / time window
 #test = [29, 1, 2]
-# time windows
-tw1 = [300, 400] # based on peak latencies of groups
-tw2 = [450, 650] # based on peak latencies of especially dyslexic group
+# time windows based on peak latencies of groups
+tw1 = [300, 400] 
+tw2 = [450, 650] 
 
 # paths etc
 SUBJECTS_DIR = '/media/cbru/SMEDY_SOURCES/DATA/MRI_data/MRI_orig/'
@@ -93,6 +93,13 @@ l5 = axs[4].plot(1e3 * stc.times, 1e12 * average_con[cons[2], 'lh'][0],
                  1e3 * stc.times, 1e12 * average_dys[cons[2], 'lh'][0], linewidth=3)
 l6 = axs[5].plot(1e3 * stc.times, 1e12 * average_con[cons[2], 'rh'][0],
                  1e3 * stc.times, 1e12 * average_dys[cons[2], 'rh'][0], linewidth=3)
+
+# add vertical lines at change onset
+for i in [0,1,4,5]:
+    axs[i].axvline(180, alpha=0.2, linestyle='dashed')
+    
+for i in [2,3]:
+    axs[i].axvline(225, alpha=0.2, linestyle='dashed')
 
 for ax in axs.flat:
     if time == 1:
