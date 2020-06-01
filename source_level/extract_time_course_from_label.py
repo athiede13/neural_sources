@@ -15,8 +15,8 @@ import mne
 #%matplotlib inline
 
 # to fill
-show_figs = 0 # 0 = no, 1 = yes
-test = [1]
+show_figs = 1 # 0 = no, 1 = yes
+#test = [7, 37]
 time = 1 # 1=MMF, 2=late MMF / time window
 
 # paths etc
@@ -39,10 +39,9 @@ CON = [1, 2, 5, 6, 7, 9, 12, 19, 23, 26, 27, 29, 34, 35, 36, 37, 39, 42,
        43, 48, 49, 50]
 cons = ['fre_sub', 'dur_sub', 'vow_sub']###['fre-ave','dur-ave','vow-ave']#['std-ave']#
 typ = 'sub' # 'sub' or 'erf' or 'std'
-test = [2]
 
 # time windows
-tw1 = [300, 400] #minimum across conditions and subject group
+tw1 = [300, 400] # across conditions and subject group
 tw2 = [450, 650]
 
 max_amp_all = []

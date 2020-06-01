@@ -24,9 +24,9 @@ MEG_DIR = '/media/cbru/SMEDY_SOURCES/DATA/MEG_prepro/'
 label_path = '/media/cbru/SMEDY_SOURCES/results/labels/'
 results_path = '/media/cbru/SMEDY_SOURCES/results/source_amps_lat/'
 stc_results_path = '/media/cbru/SMEDY_SOURCES/results/'
-CON = [1, 2, 5, 6, 7, 9, 12, 19, 23, 26, 27, 29, 34, 35, 36, 37, 39, 42,
+CON = [2, 5, 6, 7, 9, 12, 19, 23, 26, 27, 29, 34, 35, 36, 37, 39, 42,
        43, 48, 49, 50]
-DYS = [3, 4, 8, 10, 11, 13, 14, 15, 16, 17, 20, 22, 24, 25, 28, 31, 32,
+DYS = [4, 8, 10, 11, 13, 14, 15, 16, 17, 20, 22, 24, 25, 28, 31, 32,
        38, 40, 44, 45]
 tcs_con = {}
 tcs_all_con = []
@@ -34,8 +34,8 @@ tcs_dys = {}
 tcs_all_dys = []
 STCFILE_AV = MEG_DIR + 'sme_001/tata_a_fre_sub_MNE_fsav-lh.stc'
 stc = mne.read_source_estimate(STCFILE_AV, subject='fsaverage')
-cons = ['fre_sub', 'dur_sub', 'vow_sub']#['fre-ave', 'dur-ave', 'vow-ave']#['std-ave']#
-typ = 'sub'
+cons = ['std-ave','fre-ave', 'dur-ave', 'vow-ave']#['std-ave']# #['fre_sub', 'dur_sub', 'vow_sub']
+typ = 'erf+std' # or 'sub'
 
 #for subject in SUBJECTS:
 for subject in CON:
@@ -81,19 +81,38 @@ plt.grid(False)
 plt.xlabel('Time [ms]', fontsize=18)
 plt.ylabel('Source amplitude [pAm]', fontsize=18)
 
-l1 = axs[0].plot(1e3 * stc.times, 1e12 * average_con[cons[0], 'rh'][0],
-                 1e3 * stc.times, 1e12 * average_dys[cons[0], 'lh'][0], linewidth=3)
-l2 = axs[1].plot(1e3 * stc.times, 1e12 * average_con[cons[0], 'rh'][0],
-                 1e3 * stc.times, 1e12 * average_dys[cons[0], 'rh'][0], linewidth=3)
-l3 = axs[2].plot(1e3 * stc.times, 1e12 * average_con[cons[1], 'lh'][0],
-                 1e3 * stc.times, 1e12 * average_dys[cons[1], 'lh'][0], linewidth=3)
-l4 = axs[3].plot(1e3 * stc.times, 1e12 * average_con[cons[1], 'rh'][0],
-                 1e3 * stc.times, 1e12 * average_dys[cons[1], 'rh'][0], linewidth=3)
-l5 = axs[4].plot(1e3 * stc.times, 1e12 * average_con[cons[2], 'lh'][0],
-                 1e3 * stc.times, 1e12 * average_dys[cons[2], 'lh'][0], linewidth=3)
-l6 = axs[5].plot(1e3 * stc.times, 1e12 * average_con[cons[2], 'rh'][0],
-                 1e3 * stc.times, 1e12 * average_dys[cons[2], 'rh'][0], linewidth=3)
+#l1 = axs[0].plot(1e3 * stc.times, 1e12 * average_con[cons[0], 'lh'][0],
+#                 1e3 * stc.times, 1e12 * average_dys[cons[0], 'lh'][0], linewidth=3)
+#l2 = axs[1].plot(1e3 * stc.times, 1e12 * average_con[cons[0], 'rh'][0],
+#                 1e3 * stc.times, 1e12 * average_dys[cons[0], 'rh'][0], linewidth=3)
+#l3 = axs[2].plot(1e3 * stc.times, 1e12 * average_con[cons[1], 'lh'][0],
+#                 1e3 * stc.times, 1e12 * average_dys[cons[1], 'lh'][0], linewidth=3)
+#l4 = axs[3].plot(1e3 * stc.times, 1e12 * average_con[cons[1], 'rh'][0],
+#                 1e3 * stc.times, 1e12 * average_dys[cons[1], 'rh'][0], linewidth=3)
+#l5 = axs[4].plot(1e3 * stc.times, 1e12 * average_con[cons[2], 'lh'][0],
+#                 1e3 * stc.times, 1e12 * average_dys[cons[2], 'lh'][0], linewidth=3)
+#l6 = axs[5].plot(1e3 * stc.times, 1e12 * average_con[cons[2], 'rh'][0],
+#                 1e3 * stc.times, 1e12 * average_dys[cons[2], 'rh'][0], linewidth=3)
 
+# ERFs with standard
+l1 = axs[0].plot(1e3 * stc.times, 1e12 * average_con[cons[1], 'lh'][0], # fre
+                 1e3 * stc.times, 1e12 * average_dys[cons[1], 'lh'][0], linewidth=2)
+l2 = axs[1].plot(1e3 * stc.times, 1e12 * average_con[cons[1], 'rh'][0], # fre
+                 1e3 * stc.times, 1e12 * average_dys[cons[1], 'rh'][0], linewidth=2)
+l3 = axs[2].plot(1e3 * stc.times, 1e12 * average_con[cons[2], 'lh'][0], # dur
+                 1e3 * stc.times, 1e12 * average_dys[cons[2], 'lh'][0], linewidth=2)
+l4 = axs[3].plot(1e3 * stc.times, 1e12 * average_con[cons[2], 'rh'][0], # dur
+                 1e3 * stc.times, 1e12 * average_dys[cons[2], 'rh'][0], linewidth=2)
+l5 = axs[4].plot(1e3 * stc.times, 1e12 * average_con[cons[3], 'lh'][0], # vow
+                 1e3 * stc.times, 1e12 * average_dys[cons[3], 'lh'][0], linewidth=2)
+l6 = axs[5].plot(1e3 * stc.times, 1e12 * average_con[cons[3], 'rh'][0], # vow
+                 1e3 * stc.times, 1e12 * average_dys[cons[3], 'rh'][0], linewidth=2)
+
+
+# add stds to each plot (only for erfs+std)
+for i in [0,1,2,3,4,5]:
+    axs[i].plot(1e3 * stc.times, 1e12 * average_con[cons[0], 'lh'][0], linestyle='dashed', linewidth=2, color='C0')      
+    axs[i].plot(1e3 * stc.times, 1e12 * average_dys[cons[0], 'lh'][0], linestyle='dashed', linewidth=2, color='C1')
 # add vertical lines at change onset
 for i in [0,1,4,5]:
     axs[i].axvline(180, alpha=0.2, linestyle='dashed')
@@ -107,11 +126,14 @@ for ax in axs.flat:
         ax.axvspan(tw2[0], tw2[1], facecolor='grey', alpha=0.2)
     elif time == 2:
         ax.axvspan(tw2[0], tw2[1], facecolor='green', alpha=0.2)
-fig.legend(l1, ('con', 'dys'), 'upper right')
+l1.clear()
+l1.append(axs[0].lines)        
+fig.legend(l1[0], ('con dev', 'dys dev', 'con std', 'dys std'), 'upper right')
 
 fig.show()
 
 if time == 1:
     fig.savefig(results_path+'/summary_source_'+typ+'.svg', bbox_inches='tight')
+    fig.savefig(results_path+'/summary_source_'+typ+'.pdf', bbox_inches='tight')
 elif time == 2:
     fig.savefig(results_path+'/summary_source_late_'+typ+'.pdf', bbox_inches='tight')
