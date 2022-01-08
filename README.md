@@ -1,6 +1,6 @@
 # neural_sources
 
-Code used for **Thiede et al. Neuromagnetic responses during speech discrimination are associated with reading-related skills in dyslexic and typical readers, in revision.** Most of the code makes use of the [MNE Python](https://github.com/mne-tools/mne-python) software package.
+Code used for **Thiede et al. Neuromagnetic responses during speech discrimination are associated with reading-related skills in dyslexic and typical readers, 2020. Heliyon. [https://doi.org/10.1016/j.heliyon.2020.e04619]** Most of the code makes use of the [MNE Python](https://github.com/mne-tools/mne-python) software package.
 
 DOI for the code: [10.5281/zenodo.3874389](https://doi.org/10.5281/zenodo.3874389)
 
